@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<DIV ALIGN=CENTER>
+			<meta charset="UTF-8">
+			<title>Delete Employee </title>
+			<script>
+				function populate() {
+					var sel = document.getElementById("rowdata");
+					var result;
+					result = sel.options[sel.selectedIndex].value;
+					var personDetails = result.split(',');
+					document.getElementById("id").value = personDetails[0].substring(1);
+					document.getElementById("fName").value = personDetails[1].substring(2, personDetails[1].length - 1);
+					document.getElementById("lName").value = personDetails[2].substring(2, personDetails[2].length - 1);
+					document.getElementById("address").value = personDetails[3].substring(2, personDetails[3].length - 1);
+					document.getElementById("phone").value = personDetails[4].substring(2, personDetails[4].length - 1);;
+					document.getElementById("title").value = personDetails[5].substring(2, personDetails[5].length - 1);;
+					document.getElementById("age").value = parseInt(personDetails[6]);
+					document.getElementById("pps").value = personDetails[7].substring(2, personDetails[7].length - 2);
+				}
+			</script>
+			<link rel="stylesheet" href="{{ url_for('static', filename='employee.css') }}">
+			<script type=text/javascript src="{{url_for('static', filename='addEmployee.js') }}"></script>
+	</head>
+	<body>
+		<div>
+			<ul>
+				<li>
+					<a href="{{ url_for('mainMenu') }}" class="dropbtn">Main Menu</a>
+				</li>
+				<li class="dropdown">
+					<a href="{{ url_for('display_employee_form') }}">Add Employee Record</a>
+				</li>
+				<li class="dropdown">
+					<a href="{{ url_for('getEditData') }}">Edit Employee Record</a>
+				</li>
+				<li class="dropdown">
+					<a href="#">Delete Employee</a>
+				</li>
+			</ul>
+		</div>
+		<section class="frame">
+			<form action='/deleteRecord' method="Post" onsubmit="return confirmCheck()">
+				<header class="title">
+					<h1>Select Employee to Delete</h1>
+				</header>
+				<article class="inputbox1">
+					<div class="left">
+						<div class="inputbox">
+							<!-- For list box-->
+							<div style="float:center">
+								<label for="name">Name</label>
+								<select name="rowdata" id="rowdata" onclick="populate()">
+									{%for row in data %}
+									<option value="{{row}}">{{row[1],row[2]}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						<br>
+						<div class="inputbox">
+							<!-- For employee id-->
+							<input style="float:right;" type="hidden" name="id" id="id" />
+						</div>
+						<div class="inputbox">
+							<!-- For first name-->
+							<label for="fName">First Name: </label>
+							<input style="float:right;" type="text" name="fName" pattern="[A-Za-z\s]*" id="fName" title="Only enter a-z,A-z and spaces" placeholder="Enter First Name" disabled />
+						</div>
+						<br>
+						<div class="inputbox">
+							<!-- For last name-->
+							<label for="lName">Last Name: </label>
+							<input style="float:right;" type="text" name="lName" pattern="[A-Za-z\s]*" id="lName" title="Only enter a-z,A-z and spaces" placeholder="Enter last name" disabled />
+						</div>
+						<br>
+						<div class="inputbox">
+							<!-- For address-->
+							<label for="address">Address: </label>
+							<textarea style="resize:none;" id="address" name="address" placeholder="Enter Address" rows="2" cols="40" disabled></textarea>
+						</div>
+						<br>
+						<div class="inputbox">
+							<!-- For phone number-->
+							<label for="phone">Phone Number: </label>
+							<input style="float:right;" type="text" name="phone" pattern="[0-9\s]*" id="phone" title="Only enter 0-9 and spaces" placeholder="Enter Phone number" disabled />
+						</div>
+						<br>
+						<div class="inputbox">
+							<!-- For Job Title-->
+							<label for="title">Job Title: </label>
+							<input style="float:right;" type="text" name="title" id="title" placeholder="Enter Job Title" disabled />
+						</div>
+						<br>
+						<div class="inputbox">
+							<!-- For age-->
+							<label for="login">Age: </label>
+							<input style="float:right;" type="number" pattern="[0-9]*" name="age" id="age" min="16" max="65" placeholder="Age" disabled />
+						</div>
+						<br>
+						<div class="inputbox">
+							<!--pps number-->
+							<label for="pass">PPS Number: </label>
+							<input style="float:right;" type="text" name="pps" id="pps" placeholder="Enter pps number" disabled />
+						</div>
+						<br>
+				</article>
+				<article class="boxcentre">
+					<input style="float:center;" type="submit" class="button" value="Delete">
+					<input style="float:center;" type="reset" class="button" value="CLEAR">
+				</article>
+			</form>
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for message in messages %}
+						<p> {{message}}</p>
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+		</section>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+	<DIV ALIGN=CENTER>
+		<meta charset="UTF-8">
+		<title>Main Menu </title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='employee.css') }}">
+	</head>
+	<body>
+	<div>
+		<ul>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">Main Menu</a>
+			</li>
+			<li class="dropdown">
+				<a href="{{ url_for('display_employee_form') }}">Add Employee Record</a>
+			</li>
+			<li class="dropdown">
+				<a href="{{ url_for('getEditData') }}">Edit Employee Record</a>
+			</li>
+			<li class="dropdown">
+				<a href="{{ url_for('getDeleteData') }}">Delete Employee</a>
+			</li>
+		</ul>
+	</div>	
+		<img src="/static/office.jpg" alt="Image Of Night sky" width="1040" height="590">
+	</body>
+</html>	

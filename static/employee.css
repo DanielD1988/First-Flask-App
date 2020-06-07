@@ -1,0 +1,102 @@
+ul {   /*NAV BAR*/
+		  display: inline-block;    /* inline element you can apply height and width values*/
+		  list-style-type: none;    /*No bullet points*/
+		  margin: 0;
+		  padding: 0 0 25px 0;
+		  overflow: hidden;
+		  background-color: white;
+		  text-align:center;
+		  font-family: Arial, Helvetica, sans-serif;
+		}
+		
+		
+		li {
+			float: left;
+		}
+		
+		li a, .dropbtn {
+		  display: block;
+		  color: rgb(65,105,225); /* NAV BAR OPTIONS royal blue*/
+		  font-style:bold;
+		  font-size:20px;
+		  text-align: center;
+		  padding: 0px 60px;
+		  text-decoration: none;
+		  display: inline-block;
+		}
+	
+
+
+		li a:hover, .dropdown:hover .dropbtn { /*dropdown hover options*/
+			background-color: rgb(65,105,225); /*royal blue*/
+			color:white;  /*text*/
+			}
+
+		li.dropdown {
+		  display: inline-block;
+		}
+		
+
+		.dropdown-content a:hover {
+		  background-color: rgb(65,105,225); /*royal blue*/
+		}
+
+		li a:hover:not(.active){ /*dropdown option not active*/
+			background-color: #314891;  /*DARK BLUE*/
+			color:white;   /*dropdown content text when cursor hovers over*/
+		 
+		}
+		
+		li a.active { /*dropdowncontent options that are active*/
+			background-color: rgb(65,105,225); /*royal blue*/
+			color:white;
+		}
+
+
+
+		
+		.frame {
+			padding: 10px;
+			border-style: hidden;
+			border: solid;
+			border-radius: 12px; /*rounded border*/
+			border-color: rgb(65,105,225); /*royal blue*/
+			height: 540px;
+			width:  430px;
+		}
+	
+		.title {
+			text-align: center;
+			color:rgb(65,105,225); /*royal blue*/
+			font-size:20px;
+			padding: 0 0 0px 0;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+	
+	
+		.inputbox1 {   
+			padding:5px 40px;
+			font-family: Arial, Helvetica, sans-serif;
+			color:rgb(65,105,225); /*royal blue*/
+		}
+	
+		.boxcentre { /*align buttons*/
+			text-align:center;
+			padding:20px;
+		}
+	
+		.button {
+			background-color:  #314891; /*dark blue*/
+			border: none;
+			border-radius:8px;
+			color: white;
+			padding: 10px 32px;
+			text-align: center;
+			display: inline-block;
+			font-size: 12px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+		.left {
+		  text-align: left;
+		}
